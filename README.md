@@ -575,7 +575,7 @@ system con***REMOVED***guration save
 </p>
 
 > [!NOTE]
-***04_inbounds.json*** *можно настроите используя [XKeen Con***REMOVED***g Generator](#как-использовать-генератор-конфига).*
+***04_outbounds.json*** *можно настроите используя [XKeen Con***REMOVED***g Generator](#как-использовать-генератор-конфига).*
 
 <br>
 
