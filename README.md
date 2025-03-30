@@ -1226,9 +1226,9 @@ exec /opt/etc/init.d/S51dropbear restart
 
 ```
 {
-  "type": "***REMOVED***eld",
   "inboundTag": ["redirect", "tproxy"],
   "outboundTag": "vless-reality",
+  "type": "***REMOVED***eld",
   "network": "udp",
   "port": "50000-50030"
 }
