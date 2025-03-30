@@ -1225,13 +1225,13 @@ exec /opt/etc/init.d/S51dropbear restart
 2. Откройте файл **05_routing.json** в любом текстовом редакторе и добавьте в него следующий фрагмент кода:
 
 ```
-      {
-        "type": "***REMOVED***eld",
-        "inboundTag": ["redirect", "tproxy"],
-        "outboundTag": "vless-reality",
-        "network": "udp",
-        "port": "50000-50030"
-      },
+{
+  "type": "***REMOVED***eld",
+  "inboundTag": ["redirect", "tproxy"],
+  "outboundTag": "vless-reality",
+  "network": "udp",
+  "port": "50000-50030"
+}
 ```
 
 3. После внесения изменений сохраните файл и перезагрузите сервис XKeen, чтобы настройки вступили в силу. Для этого выполните команду:
