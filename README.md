@@ -706,7 +706,7 @@ system con***REMOVED***guration save
 
 Нас интересуют только 3 файла: `03_inbounds.json`, `04_outbounds.json` и `05_routing.json`
 
-* **03_inbounds.json**: https://github.com/Corvus-Malus/XKeen/releases/latest/download/03_inbounds.json
+* **03_inbounds.json** *(Mixed)*: https://github.com/Corvus-Malus/XKeen/releases/latest/download/03_inbounds.json
 
 * **04_outbounds.json**: https://github.com/Corvus-Malus/XKeen/releases/latest/download/04_outbounds.json
 
