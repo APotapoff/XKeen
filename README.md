@@ -40,14 +40,14 @@
 - [Установка XKeen](#установка-xkeen)
 - [Предварительные настройки](#предварительные-настройки)
 - [Настройка Xray](#настройка-xray)
-- [XKeen Con***REMOVED***g Generator](#как-использовать-генератор-конфига)
+- [XKeen Config Generator](#как-использовать-генератор-конфига)
 - [Настройка DNS-over-TLS и DNS-over-HTTPS](#прокси-серверы-dns-over-tls-и-dns-over-https-для-шифрования-dns-запросов)
 - [FAQ по XKeen](#faq-по-xkeen-от-jameszero)
 
 <details>
 <summary>Опциональные настройки</summary>
    
-- [Удаление компонентов IPv6 и Net***REMOVED***lter](#удаление-компонентов-ipv6-и-net***REMOVED***lter)
+- [Удаление компонентов IPv6 и Netfilter](#удаление-компонентов-ipv6-и-netfilter)
 - [Исправление ошибки «panic: runtime error: slice bounds out of range»](#ошибка-runtime-error-slice-bounds-out-of-range)
 - [Обновление ядра XRAY до последней версии](#обновление-ядра-xray-до-последней-версии)
 - [Настройка автоматического обновления файлов geosite](#настройка-автоматического-обновления-файлов-geosite_zkeendat-и-geoip_zkeenipdat)
@@ -59,6 +59,7 @@
 - [Резервное копирование для быстрого развертывания на новом носителе или восстановления на текущем](#резервное-копирование-для-быстрого-развертывания-на-новом-носителе-или-восстановления-на-текущем)
 - [Настройка BBR через 3X-UI Panel Management Script](#настройка-bbr-через-3x-ui-panel-management-script)
 - [Как отключить двухсторонний пинг в Linux](#как-отключить-двухсторонний-пинг-в-linux)
+- [Исправление проблем с iRacing](#исправление-проблем-с-iracing)
 </details>
 
 <details>
@@ -216,7 +217,7 @@ diskutil unmountDisk disk14
 3. В терминале введите команду, подставляя ваш идентификатор устройства (*в моем случае **disk14***):
 
 ```bash
-sudo $(brew --pre***REMOVED***x e2fsprogs)/sbin/mkfs.ext4 /dev/disk14
+sudo $(brew --prefix e2fsprogs)/sbin/mkfs.ext4 /dev/disk14
 ```
 
 Введите пароль администратора системы и ожидайте.
@@ -239,7 +240,7 @@ sudo $(brew --pre***REMOVED***x e2fsprogs)/sbin/mkfs.ext4 /dev/disk14
 В терминале введите команду, подставляя ваш идентификатор устройства (*в моем случае **disk14***) и имя устройства, которое вы хотите задать (*в моем случае **OPKG***):
 
 ```bash
-sudo $(brew --pre***REMOVED***x e2fsprogs)/sbin/e2label /dev/disk14 OPKG
+sudo $(brew --prefix e2fsprogs)/sbin/e2label /dev/disk14 OPKG
 ```
 
 Вводите пароль администратора системы и ожидаете.
@@ -286,7 +287,7 @@ sudo $(brew --pre***REMOVED***x e2fsprogs)/sbin/e2label /dev/disk14 OPKG
 - [x] Прокси-сервер DNS-over-TLS
 - [x] Прокси-сервер DNS-over-HTTPS
 - [x] Протокол IPv6
-- [x] Модули ядра подсистемы Net***REMOVED***lter
+- [x] Модули ядра подсистемы Netfilter
 - [ ] Сервер SSH
 
 > *Перед установкой Entware убедитесь, что компонент прошивки Кинетика «**Сервер SSH**» не установлен. Если он установлен, удалите его, так как Entware использует собственный SSH-сервер.*
@@ -361,7 +362,7 @@ sudo $(brew --pre***REMOVED***x e2fsprogs)/sbin/e2label /dev/disk14 OPKG
 
 7. Перейдите на страницу "Диагностика" и откройте Системный журнал роутера. В нем вы должны увидеть следующие записи при установке системы пакетов Entware:
 
-> I [Aug 26 16:21:42] ndm: <mark>Opkg::Manager: invalid initrc "/opt/etc/init.d/rc.unslung": no such ***REMOVED***le or directory, trying/opt/etc/init.d/.</mark>
+> I [Aug 26 16:21:42] ndm: <mark>Opkg::Manager: invalid initrc "/opt/etc/init.d/rc.unslung": no such file or directory, trying/opt/etc/init.d/.</mark>
 > 
 > I [Aug 26 16:21:43] ndm: Opkg::Manager: init script reset to default: /opt/etc/initrc.
 > 
@@ -500,7 +501,7 @@ chmod +x ./install.sh
 > Выполнять от пользователя root
 
 ```bash
-opkg install ca-certi***REMOVED***cates wget-ssl tar
+opkg install ca-certificates wget-ssl tar
 ```
 
 ```bash
@@ -637,7 +638,7 @@ Cron запущен
 Выполняется очистка временных файлов после работы Xkeen`
 Очистка временных файлов успешно выполнена
 
-Перед использованием Xray настройте конфигураций по пути «/opt/etc/xray/con***REMOVED***gs»
+Перед использованием Xray настройте конфигураций по пути «/opt/etc/xray/configs»
 Установка окончена
 ```
 
@@ -713,7 +714,7 @@ ip http ssl port 8443
 
 * Сохранить изменения
 ```bash
-system con***REMOVED***guration save
+system configuration save
 ```
 
 <p align="center">
@@ -728,13 +729,13 @@ system con***REMOVED***guration save
 <br>
 
 # Настройка Xray
-Перейти в директорию `/etc/xray/con***REMOVED***gs/`
+Перейти в директорию `/etc/xray/configs/`
 
 <p align="center">
   <a href="http://192.168.1.1/apps/device/Media0" target="_blank" rel="noopener noreferrer">
     <picture>
-      <source media="(prefers-color-scheme: dark)" srcset="https://github.com/Corvus-Malus/XKeen-docs/raw/main/images/Dark/Explorer-con***REMOVED***gs-Dark.png">
-      <img width="100%" height="100%" src="https://github.com/Corvus-Malus/XKeen-docs/raw/main/images/Light/Explorer-con***REMOVED***gs-Light.jpg">
+      <source media="(prefers-color-scheme: dark)" srcset="https://github.com/Corvus-Malus/XKeen-docs/raw/main/images/Dark/Explorer-configs-Dark.png">
+      <img width="100%" height="100%" src="https://github.com/Corvus-Malus/XKeen-docs/raw/main/images/Light/Explorer-configs-Light.jpg">
     </picture>
   </a>
 </p>
@@ -770,7 +771,7 @@ system con***REMOVED***guration save
 
 <br>
 
-**03_inbounds.json** - `/etc/xray/con***REMOVED***gs/03_inbounds.json`
+**03_inbounds.json** - `/etc/xray/configs/03_inbounds.json`
 
 <p align="center">
   <a href="http://192.168.1.1/policies/interface-priorities" target="_blank" rel="noopener noreferrer">
@@ -783,7 +784,7 @@ system con***REMOVED***guration save
 
 <br>
 
-**04_outbounds.json** - `/etc/xray/con***REMOVED***gs/04_outbounds.json`
+**04_outbounds.json** - `/etc/xray/configs/04_outbounds.json`
 
 <p align="center">
   <a href="http://192.168.1.1/policies/interface-priorities" target="_blank" rel="noopener noreferrer">
@@ -795,7 +796,7 @@ system con***REMOVED***guration save
 </p>
 
 > [!NOTE]
-***04_outbounds.json*** *можно настроите используя [XKeen Con***REMOVED***g Generator](#как-использовать-генератор-конфига).*
+***04_outbounds.json*** *можно настроите используя [XKeen Config Generator](#как-использовать-генератор-конфига).*
 
 <br>
 
@@ -807,7 +808,7 @@ system con***REMOVED***guration save
 
 `port` - "443"
 
-`***REMOVED***ngerprint` - то что указывали в настройках 3X-UI "chrome"
+`fingerprint` - то что указывали в настройках 3X-UI "chrome"
 
 `serverName` - тоже такие же как в 3X-UI "yahoo.com"
 
@@ -826,7 +827,7 @@ system con***REMOVED***guration save
 <br>
 
 <p align="center">
-  <a href="https://corvus-malus.github.io/XKeen-Con***REMOVED***g-Generator/" target="_blank" rel="noopener noreferrer">
+  <a href="https://corvus-malus.github.io/XKeen-Config-Generator/" target="_blank" rel="noopener noreferrer">
     <picture>
       <source media="(prefers-color-scheme: dark)" srcset="https://github.com/Corvus-Malus/XKeen-docs/raw/main/images/Dark/3X-UI-2-Dark.png">
       <img src="https://github.com/Corvus-Malus/XKeen-docs/raw/main/images/Dark/3X-UI-2-Dark.png">
@@ -839,7 +840,7 @@ system con***REMOVED***guration save
 Инфо соединения также можно взять из URL
 
 <p align="center">
-  <a href="https://corvus-malus.github.io/XKeen-Con***REMOVED***g-Generator/" target="_blank" rel="noopener noreferrer">
+  <a href="https://corvus-malus.github.io/XKeen-Config-Generator/" target="_blank" rel="noopener noreferrer">
     <picture>
       <source media="(prefers-color-scheme: dark)" srcset="https://github.com/Corvus-Malus/XKeen-docs/raw/main/images/Dark/3X-UI-3-Dark.png">
       <img src="https://github.com/Corvus-Malus/XKeen-docs/raw/main/images/Dark/3X-UI-3-Dark.png">
@@ -847,7 +848,7 @@ system con***REMOVED***guration save
   </a>
 </p>
 
->pbk=publicKey, fp=***REMOVED***ngerprint, sni=serverName, sid=shortId
+>pbk=publicKey, fp=fingerprint, sni=serverName, sid=shortId
 
 <br>
 
@@ -861,7 +862,7 @@ system con***REMOVED***guration save
 1. Перейдите в панель 3X-UI.
 
 <p align="center">
-  <a href="https://corvus-malus.github.io/XKeen-Con***REMOVED***g-Generator/" target="_blank" rel="noopener noreferrer">
+  <a href="https://corvus-malus.github.io/XKeen-Config-Generator/" target="_blank" rel="noopener noreferrer">
     <picture>
       <source media="(prefers-color-scheme: dark)" srcset="https://github.com/Corvus-Malus/XKeen-docs/raw/main/images/Dark/3X-UI-4-Dark.png">
       <img src="https://github.com/Corvus-Malus/XKeen-docs/raw/main/images/Dark/3X-UI-4-Dark.png">
@@ -874,7 +875,7 @@ system con***REMOVED***guration save
 2. Найдите и скопируйте ссылку подключения, которая необходима для генерации конфигурационного файла.
 
 <p align="center">
-  <a href="https://corvus-malus.github.io/XKeen-Con***REMOVED***g-Generator/" target="_blank" rel="noopener noreferrer">
+  <a href="https://corvus-malus.github.io/XKeen-Config-Generator/" target="_blank" rel="noopener noreferrer">
     <picture>
       <source media="(prefers-color-scheme: dark)" srcset="https://github.com/Corvus-Malus/XKeen-docs/raw/main/images/Dark/3X-UI-5-Dark.png">
       <img src="https://github.com/Corvus-Malus/XKeen-docs/raw/main/images/Dark/3X-UI-5-Dark.png">
@@ -884,13 +885,13 @@ system con***REMOVED***guration save
 
 <br>
 
-3. Перейдите по ссылке https://corvus-malus.github.io/XKeen-Con***REMOVED***g-Generator
+3. Перейдите по ссылке https://corvus-malus.github.io/XKeen-Config-Generator
 
 <p align="center">
-  <a href="https://corvus-malus.github.io/XKeen-Con***REMOVED***g-Generator/" target="_blank" rel="noopener noreferrer">
+  <a href="https://corvus-malus.github.io/XKeen-Config-Generator/" target="_blank" rel="noopener noreferrer">
     <picture>
-      <source media="(prefers-color-scheme: dark)" srcset="https://github.com/Corvus-Malus/XKeen-docs/raw/main/images/Dark/XKeen-Con***REMOVED***g-Generator-Dark.png">
-      <img src="https://github.com/Corvus-Malus/XKeen-docs/raw/main/images/Dark/XKeen-Con***REMOVED***g-Generator-Dark.png">
+      <source media="(prefers-color-scheme: dark)" srcset="https://github.com/Corvus-Malus/XKeen-docs/raw/main/images/Dark/XKeen-Config-Generator-Dark.png">
+      <img src="https://github.com/Corvus-Malus/XKeen-docs/raw/main/images/Dark/XKeen-Config-Generator-Dark.png">
     </picture>
   </a>
 </p>
@@ -902,10 +903,10 @@ system con***REMOVED***guration save
 6. После завершения генерации, файл `04_outbounds` будет доступен для сохранения на вашем компьютере.
 
 <p align="center">
-  <a href="https://corvus-malus.github.io/XKeen-Con***REMOVED***g-Generator/" target="_blank" rel="noopener noreferrer">
+  <a href="https://corvus-malus.github.io/XKeen-Config-Generator/" target="_blank" rel="noopener noreferrer">
     <picture>
-      <source media="(prefers-color-scheme: dark)" srcset="https://github.com/Corvus-Malus/XKeen-docs/raw/main/images/Dark/XKeen-Con***REMOVED***g-Generator-2-Dark.png">
-      <img src="https://github.com/Corvus-Malus/XKeen-docs/raw/main/images/Dark/XKeen-Con***REMOVED***g-Generator-2-Dark.png">
+      <source media="(prefers-color-scheme: dark)" srcset="https://github.com/Corvus-Malus/XKeen-docs/raw/main/images/Dark/XKeen-Config-Generator-2-Dark.png">
+      <img src="https://github.com/Corvus-Malus/XKeen-docs/raw/main/images/Dark/XKeen-Config-Generator-2-Dark.png">
     </picture>
   </a>
 </p>
@@ -914,7 +915,7 @@ system con***REMOVED***guration save
 
 <br>
 
-**05_routing.json** - `/etc/xray/con***REMOVED***gs/05_routing.json`
+**05_routing.json** - `/etc/xray/configs/05_routing.json`
 
 > *Конфигуратор правил маршрутизации для xKeen: [XKeen Routing Generator](https://xray-routing-generator.netlify.app/)*
 
@@ -978,10 +979,10 @@ xkeen -start
 * Cisco Umbrella DoH: `https://doh.opendns.com/dns-query`
 
 <p align="center">
-  <a href="http://192.168.1.1/internet-***REMOVED***lter/dns-con***REMOVED***guration" target="_blank" rel="noopener noreferrer">
+  <a href="http://192.168.1.1/internet-filter/dns-configuration" target="_blank" rel="noopener noreferrer">
     <picture>
-      <source media="(prefers-color-scheme: dark)" srcset="https://github.com/Corvus-Malus/XKeen-docs/raw/main/images/Dark/Keenetic-dns-con***REMOVED***guration-Dark.png">
-      <img width="100%" height="100%" src="https://github.com/Corvus-Malus/XKeen-docs/raw/main/images/Light/Keenetic-dns-con***REMOVED***guration-Light.png">
+      <source media="(prefers-color-scheme: dark)" srcset="https://github.com/Corvus-Malus/XKeen-docs/raw/main/images/Dark/Keenetic-dns-configuration-Dark.png">
+      <img width="100%" height="100%" src="https://github.com/Corvus-Malus/XKeen-docs/raw/main/images/Light/Keenetic-dns-configuration-Light.png">
     </picture>
   </a>
 </p>
@@ -1022,9 +1023,9 @@ END
 
 # Опциональные настройки
 
-### Удаление компонентов IPv6 и Net***REMOVED***lter
+### Удаление компонентов IPv6 и Netfilter
 
-> *Если установленные компоненты **IPv6** и **Net***REMOVED***lter** вам не нужны и были установлены только для **XKeen**, вы можете их удалить, выполнив следующие шаги:*
+> *Если установленные компоненты **IPv6** и **Netfilter** вам не нужны и были установлены только для **XKeen**, вы можете их удалить, выполнив следующие шаги:*
 
 * Подключиться к Entware по SSH под root
 * Выполнить команду: **`xkeen -modules`**
@@ -1032,13 +1033,13 @@ END
 * Перейти в раздел **`Параметры системы > Изменить набор компонентов`**
 * Снять отметки для удаления
 1. **Протокол IPv6**
-2. **Модули ядра подсистемы Net***REMOVED***lter**
+2. **Модули ядра подсистемы Netfilter**
 
 <br><br>
 
 ### Ошибка runtime error: slice bounds out of range
 
-> *В случае возникновения ошибки <mark>«panic: runtime error: slice bounds out of range»</mark> или других неожиданных сбоев в работе Xray, рекомендуется выполнить [обновление ядра](https://github.com/Corvus-Malus/XKeen?tab=readme-ov-***REMOVED***le#обновление-ядра-xray-до-последней-версии) на роутере до версии **25.1.30 или выше**. По умолчанию XKeen устанавливает ядро Xray версии **1.8.4**, которое может быть причиной проблем. Данная мера часто позволяет устранить ошибки и восстановить корректную работу системы.*
+> *В случае возникновения ошибки <mark>«panic: runtime error: slice bounds out of range»</mark> или других неожиданных сбоев в работе Xray, рекомендуется выполнить [обновление ядра](https://github.com/Corvus-Malus/XKeen?tab=readme-ov-file#обновление-ядра-xray-до-последней-версии) на роутере до версии **25.1.30 или выше**. По умолчанию XKeen устанавливает ядро Xray версии **1.8.4**, которое может быть причиной проблем. Данная мера часто позволяет устранить ошибки и восстановить корректную работу системы.*
 
 <br><br>
 
@@ -1091,7 +1092,7 @@ chmod +x install_xray.sh
 <br>
 
 > [!NOTE]
-> **Примечание:** *Если после обновления ядра Xray появилась ошибка, проверьте, удалил ли скрипт файл **02_transport.json**. Для этого перейдите в директорию `/etc/xray/con***REMOVED***gs` и удалите файл вручную, если он все еще присутствует.
+> **Примечание:** *Если после обновления ядра Xray появилась ошибка, проверьте, удалил ли скрипт файл **02_transport.json**. Для этого перейдите в директорию `/etc/xray/configs` и удалите файл вручную, если он все еще присутствует.
 > Кроме того, убедитесь, что в файле **03_inbounds.json** (он находится в той же директории) есть строка:*
 >```
 > "routeOnly": true,
@@ -1131,12 +1132,12 @@ chmod +x /opt/sbin/xray
 
 4. **Удалите файл 02_transport.json**
 
-Перейдите в директорию `\etc\xray\con***REMOVED***gs` и удалите файл: **02_transport.json.**
+Перейдите в директорию `\etc\xray\configs` и удалите файл: **02_transport.json.**
 
 
 5. **Добавить routeOnly в 03_inbounds.json**
 
-Откройте файл **03_inbounds.json**, который находится в директории `\etc\xray\con***REMOVED***gs`, и убедитесь, что в нем присутствует следующая строка:
+Откройте файл **03_inbounds.json**, который находится в директории `\etc\xray\configs`, и убедитесь, что в нем присутствует следующая строка:
 
 ```
 "routeOnly": true,
@@ -1189,9 +1190,9 @@ opkg install nano
 <br>
 
 **Шаг 2: Настройка nano как редактора по умолчанию**
-* Открыть файл `/etc/pro***REMOVED***le` для редактирования:
+* Открыть файл `/etc/profile` для редактирования:
 ```bash
-nano /etc/pro***REMOVED***le
+nano /etc/profile
 ```
 * Добавить в конец файла следующие строки:
 ```bash
@@ -1251,7 +1252,7 @@ xkeen -restart
 
 ### Исправление проблемы с быстрым обрывом соединений по SSH
 
-Отредактируйте файл `/opt/etc/con***REMOVED***g/06_policy.json`, увеличив значение параметра `connIdle`. Стандартное значение, указанное в документации XRay, составляет **300**. Увеличение этого значения может повысить нагрузку на роутер. 
+Отредактируйте файл `/opt/etc/config/06_policy.json`, увеличив значение параметра `connIdle`. Стандартное значение, указанное в документации XRay, составляет **300**. Увеличение этого значения может повысить нагрузку на роутер. 
 
 > *В качестве альтернативного решения добавьте IP-адрес сервера в исключения маршрутизации (см. раздел "Решение проблем с маршрутизацией при использовании нескольких туннелей").*
 
@@ -1279,14 +1280,14 @@ exec /opt/etc/init.d/S51dropbear restart
 
 Если у вас возникли проблемы с передачей голоса в Discord, выполните следующие шаги:
 
-1. Перейдите в директорию `\etc\xray\con***REMOVED***gs`
+1. Перейдите в директорию `\etc\xray\configs`
 2. Откройте файл **05_routing.json** в любом текстовом редакторе и добавьте в него следующий фрагмент кода:
 
 ```
 {
   "inboundTag": ["redirect", "tproxy"],
   "outboundTag": "vless-reality",
-  "type": "***REMOVED***eld",
+  "type": "field",
   "network": "udp",
   "port": "50000-50030"
 }
@@ -1306,10 +1307,43 @@ xkeen -restart
 
 <br><br>
 
+### Исправление проблем с iRacing
+С некоторого времени происходит блокировка UDP трафика на сервера Amazon. В свою очередь, iRacing использует в сетевом коде исключительно UDP пакеты, результат — вы или не можете подключить к серверам или имеете Packet Loss во время сессии, с последующим отлюкчением.
+Для исправления ситуации требуется завернуть весь UDP трафик по используемому диапазону портов на наш vless сервер. Актуальный диапазон портов на данный момент для UDP (15000-52500), но лучше свериться по ссылке, что ничего не изменилось: [iRacing Support](https://support.iracing.com/support/solutions/articles/31000140706-what-ports-and-ip-addresses-does-iracing-use-).
+
+1. Перейдите в директорию `\etc\xray\configs`
+2. Откройте файл **05_routing.json** в любом текстовом редакторе и добавьте в него нижеследующий фрагмент кода. Если вы ранее исправляли проблемы с голосом в Discord, то эта секция у вас уже есть и тогда достаточно расширить диапазон портов:
+
+```
+{
+  "inboundTag": ["redirect", "tproxy"],
+  "outboundTag": "vless-reality",
+  "type": "field",
+  "network": "udp",
+  "port": "15000-52500"
+}
+```
+
+3. Подключиться к Entware по SSH под пользователем root и добавьте новый диапазон портов:
+
+```bash
+xkeen -ap 15000:52500
+```
+
+4. [Если вы ранее настраивали порты для Discrod](https://github.com/Corvus-Malus/XKeen/tree/main?tab=readme-ov-file#исправление-проблем-с-голосом-в-discord), их необходимо удалить, так как диапазон iRacing полностью их перекрывает:
+
+```
+xkeen -dp 50000:50030
+```
+
+Сервис xkeen перезапустится автоматически.
+
+<br><br>
+
 ### [Возможные решения проблем с доступом к ChatGPT и другим сайтам](https://telegra.ph/QUIC-Enabled---Disabled-08-26)
 
 <p align="center">
-  <a href="http://192.168.1.1/***REMOVED***rewall/Bridge0" target="_blank" rel="noopener noreferrer">
+  <a href="http://192.168.1.1/firewall/Bridge0" target="_blank" rel="noopener noreferrer">
     <picture>
       <source media="(prefers-color-scheme: dark)" srcset="https://github.com/Corvus-Malus/XKeen-docs/raw/main/images/Dark/Keenetic-Bridge0-Dark.jpg">
       <img width="100%" height="100%" src="https://github.com/Corvus-Malus/XKeen-docs/raw/main/images/Light/Keenetic-Bridge0-Light.png">
@@ -1591,7 +1625,7 @@ sudo sysctl -p
 
 `xkeen -diag`: Создание файла диагностики
 
-`xkeen -***REMOVED***xed`: Исправление регистраций от ошибок Entware (пользовательские настройки автозапуска будут утеряны)
+`xkeen -fixed`: Исправление регистраций от ошибок Entware (пользовательские настройки автозапуска будут утеряны)
 
 ### Удаляем Xray | XKeen | Конфигурации | Резервные копии
 
@@ -1607,13 +1641,13 @@ sudo sysctl -p
 
 - [Настройка TCP BBR](https://telegra.ph/Nastrojka-TCP-BBR-08-15)
 - [AdGuard Home Keenetic 4.2 beta 3](https://github.com/Corvus-Malus/AdGuardHome-Keenetic)
-- [Обновление Xray — Настройка Балансировки и Ротации Трафика](https://telegra.ph/Balansirovka-i-Rotaciya-Tra***REMOVED***ka-08-20)
+- [Обновление Xray — Настройка Балансировки и Ротации Трафика](https://telegra.ph/Balansirovka-i-Rotaciya-Trafika-08-20)
 - [Полезные сервисы и скрипты](https://telegra.ph/Poleznye-servisy-i-skripty-08-16)
 
 ---
 
 * [Инструкция](https://xskrill.notion.site/XKeen-c9f0f2a5018743b59eb81bd6fccdf25a) | От [автора](https://t.me/Skrill_zerro) XKeen | Для продвинутой настройки
-* [Инструкция ядра](https://xtls.github.io/ru/con***REMOVED***g/features/multiple.html#пример-конфигурации) | В переводе от Nikita Korotaev
+* [Инструкция ядра](https://xtls.github.io/ru/config/features/multiple.html#пример-конфигурации) | В переводе от Nikita Korotaev
 * [Форк XKeen](https://github.com/jameszeroX/XKeen) | jameszero
 * [Project VLESS](https://t.me/projectVless) | Русскоязычный чат
 * https://forum.keenetic.com/topic/16899-xkeen/
@@ -1625,7 +1659,7 @@ sudo sysctl -p
 
 ## Купить кофе автору
 
-**Купить кофе автору ядра [Xray](https://github.com/XTLS/Xray-core?tab=readme-ov-***REMOVED***le#donation--nfts)**
+**Купить кофе автору ядра [Xray](https://github.com/XTLS/Xray-core?tab=readme-ov-file#donation--nfts)**
 
 Если есть возможность поддержать автора ядра, чьими заслугами мы регулярно пользуемся, пожалуйста, сделайте это.
 Ситуация такова, что его труд и время даже минимально не окупаются. 
