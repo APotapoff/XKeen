@@ -496,7 +496,9 @@ chmod +x ./install.sh
 
 <details>
 <summary>Альтернативный вариант установки</summary>
-  
+
+<br>
+
 > Выполнять от пользователя root
 
 ```bash
@@ -513,6 +515,31 @@ cd /opt/sbin/_xkeen
 
 ```bash
 xkeen -i
+```
+
+</details>
+
+<details>
+<summary>Оригинальный вариант установки Skrill0 (на устаревшем ядре Xray 1.8.4)</summary>
+
+<br>
+
+> Выполнять от пользователя root
+
+```bash
+opkg install curl
+```
+
+```bash
+curl -sOfL https://raw.githubusercontent.com/Skrill0/XKeen/main/install.sh
+```
+
+```bash
+chmod +x ./install.sh
+```
+
+```bash
+./install.sh
 ```
 
 </details>
