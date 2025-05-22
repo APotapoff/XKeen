@@ -532,7 +532,7 @@ chmod +x ./install.sh
 ```
 
 <details>
-<summary>Альтернативный вариант установки форка XKeen версии 1.1.3.4</summary>
+<summary>Альтернативный вариант установки форка XKeen версии 1.1.3.5</summary>
 
 <br>
 
