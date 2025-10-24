@@ -1,4 +1,4 @@
-*XKeen обновлён до версии 1.1.3.8 (12.08.2025) — форк от [JamesZero](https://github.com/jameszeroX).*
+*XKeen обновлён до версии 1.1.3.8 (12 августа 2025) — форк от [JamesZero](https://github.com/jameszeroX).*
 
 <details>
 <summary>Список изменений:</summary>
