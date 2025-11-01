@@ -574,7 +574,7 @@ opkg upgrade
 > Выполнять от пользователя root
 
 ```bash
-opkg install curl
+opkg update && opkg upgrade && opkg install curl tar
 ```
 
 ```bash
@@ -590,22 +590,22 @@ chmod +x ./install.sh
 ```
 
 <details>
-<summary>Альтернативный вариант установки форка XKeen версии 1.1.3.5</summary>
+<summary>Альтернативный вариант установки форка XKeen версии 1.1.3.8</summary>
 
 <br>
 
 > Выполнять от пользователя root
 
 ```bash
-opkg install ca-certificates wget-ssl tar
+opkg update && opkg upgrade && opkg install curl tar
 ```
 
 ```bash
-wget "https://cdn.jsdelivr.net/gh/jameszeroX/XKeen@main/xkeen.tar" && tar -xvf xkeen.tar -C /opt/sbin --overwrite > /dev/null && rm xkeen.tar
+curl -OL https://ghfast.top/https://github.com/jameszeroX/XKeen/releases/latest/download/xkeen.tar.gz
 ```
 
 ```bash
-cd /opt/sbin/_xkeen
+tar -xvzf xkeen.tar.gz -C /opt/sbin > /dev/null && rm xkeen.tar.gz
 ```
 
 ```bash
