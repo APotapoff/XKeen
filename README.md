@@ -592,17 +592,9 @@ opkg upgrade
 
 ```bash
 opkg update && opkg upgrade && opkg install curl tar && cd /tmp
-```
-
-```bash
-curl -OL --connect-timeout 10 -m 60 https://raw.githubusercontent.com/jameszeroX/XKeen/main/install.sh
-```
-
-```bash
+url="https://raw.githubusercontent.com/jameszeroX/XKeen/main/install.sh"
+curl -OL --connect-timeout 10 -m 60 "$url"
 chmod +x install.sh
-```
-
-```bash
 ./install.sh
 ```
 
@@ -617,14 +609,7 @@ chmod +x install.sh
 ```bash
 opkg update && opkg upgrade && opkg install curl tar && cd /tmp
 url="https://github.com/jameszeroX/XKeen/releases/latest/download/xkeen.tar.gz"
-if ! curl -OL --connect-timeout 10 -m 60 "$url"; then
-    if ! curl -OL --connect-timeout 10 -m 60 "https://gh-proxy.com/$url"; then
-        if ! curl -OL --connect-timeout 10 -m 60 "https://ghfast.top/$url"; then
-            echo "Ошибка: не удалось загрузить xkeen.tar.gz"
-            exit 1
-        fi
-    fi
-fi
+curl -OL --connect-timeout 10 -m 60 "$url"
 tar -xvzf xkeen.tar.gz -C /opt/sbin > /dev/null && rm xkeen.tar.gz
 xkeen -i
 ```
