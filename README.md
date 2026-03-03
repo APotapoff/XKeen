@@ -652,6 +652,42 @@ xkeen -i
 
 <details>
 
+<summary>OffLine-установка форка XKeen</summary>
+
+## Self-Hosted-прокси для загрузки
+
+В базовый конфиг добавлены два GitHub-прокси, через которые возможна загрузка XKeen и его компонентов в случае недоступности GitHub. Если же и они окажутся недоступны, можете установить [Self-Hosted прокси](https://github.com/hunshcn/gh-proxy) на своём сервере и указать его в переменной `gh_proxy1` или `gh_proxy2` файла `/opt/sbin/.xkeen/01_info/01_info_variable.sh`
+
+---
+
+## OffLine-установка
+Обычная установка XKeen и необходимых компонентов выполняется в OnLine режиме и жёстко привязана к GitHub, а в случае его недоступности будет невозможна. Поэтому в форк дополнительно к способу установки через [Self-Hosted](https://github.com/jameszeroX/XKeen/blob/main/configuration.md#self-hosted-прокси-для-загрузки)-прокси добавлен режим OffLine-установки по команде `xkeen -io`
+
+Для OffLine-установки необходимо заранее любым способом скачать установочный архив XKeen версии 1.1.3.7+, ядро проксирования [xray](https://github.com/XTLS/Xray-core/releases/latest) и(или) [mihomo](https://github.com/MetaCubeX/mihomo/releases/latest) + парсер yaml-файлов [yq](https://github.com/mikefarah/yq/releases/latest) подходящей архитектуры. Если планируте использовать xray и геофайлы в роутинге, то загрузите и их. Следующим шагом поместите в папку /opt/sbin/ архив XKeen (не распаковывая) и предварительно извлечённые из архива и при необходимости переименованные в `xray` `mihomo` и `yq` бинарники, затем выполните OffLine-установку командами в ssh-консоли entware Keenetic:
+
+```
+cd /opt/sbin
+tar -xvzf xkeen.tar.gz && rm xkeen.tar.gz
+xkeen -io
+#
+```
+
+Копирование файлов конфигурации xray, mihomo и необходимых геофайлов в директории /opt/etc/xray/configs, /opt/etc/mihomo, /opt/etc/xray/dat выполните вручную, после чего можете запустить проксирование командой `xkeen -start`
+
+При OffLine-установке XKeen не проверяет соответствие архитектуры процессора и бинарников, поэтому выбирайте совместимые бинарники внимательно. Если затрудняетесь в выборе, запустите `xkeen -io` без xray и mihomo в папке /opt/sbin/ и XKeen сообщит, какая архитектура требуется для вашего роутера.
+
+При недоступности GitHub, обновление геофайлов по планировщику работать не будет, выполняйте его вручную.
+
+Если недоступен не только GitHub, но и [репозиторий Entware](http://bin.entware.net), то перед OffLine установкой XKeen требуется вручную установить недостающие пакеты из следующего списка:
+```
+curl, tar, lscpu, jq, libc, libssp, librt, libpthread, iptables, ca-bundle, coreutils-uname, coreutils-nohup
+```
+либо прописать в файл `/opt/etc/opkg.conf` рабочее зеркало репозитория
+
+</details>
+
+<details>
+
 <summary>Порядок обновления с любой предыдущей верcии форка</summary>
 
 ```
@@ -667,6 +703,7 @@ xkeen -k
 </details>
 
 <details>
+
 <summary>Оригинальный вариант установки XKeen версии 1.1.3.0 (на устаревшем ядре Xray 1.8.4)</summary>
 
 <br>
