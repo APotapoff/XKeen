@@ -1008,7 +1008,7 @@ system configuration save
 </p>
 
 > [!NOTE]
-***04_outbounds.json*** *можно настроите используя [XKeen Config Generator](#как-использовать-генератор-конфига).*
+***04_outbounds.json*** *можно настроить используя [XKeen Config Generator](#как-использовать-генератор-конфига).*
 
 <br>
 
