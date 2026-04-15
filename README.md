@@ -628,7 +628,7 @@ opkg update && opkg upgrade && opkg install curl tar && cd /tmp
 sh -c "$(curl -sSL https://raw.githubusercontent.com/jameszeroX/XKeen/main/install.sh)"
 ```
 
-Автор форка [https://github.com/jameszeroX/XKeen/tree/main](https://github.com/jameszeroX/XKeen)
+Автор форка https://github.com/jameszeroX/XKeen
 
 <details>
 
