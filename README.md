@@ -625,10 +625,7 @@ opkg upgrade
 
 ```bash
 opkg update && opkg upgrade && opkg install curl tar && cd /tmp
-url="https://raw.githubusercontent.com/jameszeroX/XKeen/main/install.sh"
-curl -OL --connect-timeout 10 -m 60 "$url"
-chmod +x install.sh
-./install.sh
+sh -c "$(curl -sSL https://raw.githubusercontent.com/jameszeroX/XKeen/main/install.sh)"
 ```
 
 <details>
